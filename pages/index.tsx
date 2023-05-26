@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <main
       title='Shifts'
-      className={`w-screen h-screen bg-slate-700 ${inter.className}`}
+      className={`w-screen h-screen bg-slate-800 ${inter.className}`}
     >
       <div className='flex flex-col items-center justify-between p-24'>
         { shifts ?
