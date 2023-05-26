@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useEffect, useState } from 'react'
 
-import type { Database } from '@/lib/database.types'
+import type { Database } from '../types/supabase'
 type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 const inter = Inter({ subsets: ['latin'] })
