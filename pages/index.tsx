@@ -1,6 +1,11 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { createClient } from '@supabase/supabase-js'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useEffect, useState } from 'react'
+
+import type { Database } from '@/lib/database.types'
+type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,19 +18,37 @@ export default function Home() {
   //   return <>Loading...</>;
   // }
 
+  const [shifts, setShifts] = useState<Shift[] | null>(null);
 
   // Create a single supabase client for interacting with your database
-  // const supabase = createClient('https://fklutoctmzfawwrahwbd.supabase.co', process.env.SUPABASE_KEY ?? 'err')
+  const supabase = createClientComponentClient<Database>()
+  // const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL ?? '', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'err')
   // const { data, error } = supabase.from('shifts').select() // Select all from user ordered by data desc
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await supabase.from("shifts").select();
+      setShifts(data);
+    };
+
+    getData();
+  }, []);
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
       title='Shifts'
+      className={`w-screen h-screen bg-slate-700 ${inter.className}`}
     >
-      Driver Tracker
-
-      { /* Show Table of Entries */ }
+      <div className='flex flex-col items-center justify-between p-24'>
+        { shifts ?
+        <>
+          Shifts:
+          <pre>{JSON.stringify(shifts, null, 2)}</pre>
+        </> : <>
+          Loading Shifts...
+        </>
+        }
+      </div>
     </main>
   )
 }
