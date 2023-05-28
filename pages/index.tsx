@@ -4,7 +4,8 @@ import { createClient } from '@supabase/supabase-js'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useEffect, useState } from 'react'
 
-import type { Database } from '../types/supabase'
+import type { Database } from '@/types/supabase'
+import ShiftItem from '@/components/Shift'
 type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,13 +38,15 @@ export default function Home() {
   return (
     <main
       title='Shifts'
-      className={`w-screen h-screen bg-slate-800 ${inter.className}`}
+      className={`w-screen h-screen bg-neutral-400 ${inter.className}`}
     >
-      <div className='flex flex-col items-center justify-between p-24'>
+      <div className='flex flex-col items-center justify-center p-24'>
         { shifts ?
         <>
           Shifts:
-          <pre>{JSON.stringify(shifts, null, 2)}</pre>
+          <div className='flex flex-col bg-gray-200 border-blue-900 text-black rounded-lg'>
+            {shifts && shifts.map(shift => (<ShiftItem {...shift}/>))}
+          </div>
         </> : <>
           Loading Shifts...
         </>
