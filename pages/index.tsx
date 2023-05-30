@@ -45,7 +45,7 @@ export default function Home() {
         <>
           Shifts:
           <div className='flex flex-col bg-zinc-400 border-blue-900 text-black rounded-lg'>
-            {shifts && shifts.map(shift => (<ShiftItem {...shift}/>))}
+            {shifts && shifts.map(shift => (<ShiftItem key={shift.id} {...shift}/>))}
           </div>
         </> : <>
           Loading Shifts...
