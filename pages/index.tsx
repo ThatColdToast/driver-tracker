@@ -38,13 +38,13 @@ export default function Home() {
   return (
     <main
       title='Shifts'
-      className={`w-screen h-screen bg-neutral-400 ${inter.className}`}
+      className={`w-screen h-screen bg-slate-500 ${inter.className}`}
     >
-      <div className='flex flex-col items-center justify-center p-24'>
+      <div className='p-24 flex flex-col justify-center items-center'>
         { shifts ?
         <>
           Shifts:
-          <div className='flex flex-col bg-gray-200 border-blue-900 text-black rounded-lg'>
+          <div className='flex flex-col bg-zinc-400 border-blue-900 text-black rounded-lg'>
             {shifts && shifts.map(shift => (<ShiftItem {...shift}/>))}
           </div>
         </> : <>

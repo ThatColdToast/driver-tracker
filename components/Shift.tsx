@@ -5,7 +5,7 @@ type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 export default function ShiftItem(shift: Shift) {
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row m-2 bg-gray-100 rounded-xl'>
         <div className='m-2'>
             <p>Date</p>
             <p>{new Intl.DateTimeFormat('en-US').format(Date.parse(shift.created_at ?? ''))}</p>
