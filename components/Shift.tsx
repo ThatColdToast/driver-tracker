@@ -12,7 +12,7 @@ export default function ShiftItem(shift: Shift) {
         </div>
         <div className='m-2'>
             <p>Miles</p>
-            <p>{shift.miles}</p>
+            <p>{shift.odometer_end - shift.odometer_start}</p>
         </div>
         <div className='m-2'>
             <p>Revenue</p>

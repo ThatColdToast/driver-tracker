@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 import type { Database } from '@/types/supabase'
 import ShiftItem from '@/components/Shift'
+import Head from 'next/head'
 type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 const inter = Inter({ subsets: ['latin'] })
@@ -36,10 +37,8 @@ export default function Home() {
   }, []);
 
   return (
-    <main
-      title='Shifts'
-      className={`w-screen h-screen bg-slate-500 ${inter.className}`}
-    >
+    <main className={`w-screen h-screen bg-slate-500 ${inter.className}`}>
+      <Head><title>Shifts</title></Head>
       <div className='p-24 flex flex-col justify-center items-center'>
         { shifts ?
         <>
@@ -48,7 +47,10 @@ export default function Home() {
             {shifts && shifts.map(shift => (<ShiftItem key={shift.id} {...shift}/>))}
           </div>
         </> : <>
-          Loading Shifts...
+          Shifts:
+          <p>
+            Loading...
+          </p>
         </>
         }
       </div>

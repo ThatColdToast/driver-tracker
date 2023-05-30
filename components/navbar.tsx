@@ -1,6 +1,11 @@
 import Link from "next/link";
 
+import type { Database } from '@/types/supabase'
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
 const Navbar = () => {
+  const supabase = createClientComponentClient<Database>()
+
   return (
     <div className="navbar bg-gray-700 text-white">
       <div className="flex-1">
