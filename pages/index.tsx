@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { createClient } from '@supabase/supabase-js'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useEffect, useState } from 'react'
 
 import type { Database } from '@/types/supabase'
-import ShiftItem from '@/components/Shift'
+import ShiftItem from '@/components/ShiftItem'
 import Head from 'next/head'
 import Navbar from '@/components/navbar'
+import { useRouter } from 'next/navigation'
 type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 const inter = Inter({ subsets: ['latin'] })
@@ -26,6 +26,8 @@ export default function Home() {
   // Create a single supabase client for interacting with your database
   const supabase = createClientComponentClient<Database>()
 
+  const router = useRouter()
+
   useEffect(() => {
     const getData = async () => {
       const { data } = await supabase.from("shifts").select();
@@ -38,22 +40,19 @@ export default function Home() {
   return (
     <main className={`w-screen h-screen bg-slate-500 ${inter.className}`}>
       <Head><title>Shifts</title></Head>
-      <Navbar/>
-      <div className='p-24 flex flex-col justify-center items-center'>
-        { shifts ?
-        <>
-          Shifts:
-          <div className='flex flex-col bg-zinc-400 border-blue-900 text-black rounded-lg'>
-            {shifts.map(shift => (<ShiftItem key={shift.id} {...shift}/>))}
-            {/* {shifts.reduce((partialSum, a) => (partialSum + a.revenue), 0)} */}
-          </div>
-        </> : <>
-          Shifts:
-          <p>
-            Loading...
-          </p>
-        </>
-        }
+      <Navbar {...{tab:'home'}}/>
+      <div className='p-2 flex flex-col justify-center items-center'>
+          <div className='flex flex-col p-2 bg-zinc-400 text-black rounded-lg'>
+            { shifts ?
+            <>
+              <p className='text-center text-white'>Shifts:</p>
+              {shifts.map(shift => (<ShiftItem key={shift.id} {...shift}/>))}
+              <button onClick={() => (router.push('/add'))} className='flex flex-row m-2 p-2 rounded-xl justify-center bg-red-700 hover:bg-red-600 text-white text-2xl font-bold'>+</button>
+            </> : <>
+              <p className='text-center text-white'>Shifts:<br/>Loading...</p>
+            </>
+            }
+        </div>
       </div>
     </main>
   )

@@ -8,7 +8,7 @@ import Head from 'next/head'
 import Navbar from '@/components/navbar'
 
 export default function Login() {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('email@example.com')
   const [password, setPassword] = useState('')
   const router = useRouter()
   const supabase = createClientComponentClient<Database>()
@@ -18,7 +18,8 @@ export default function Login() {
       email,
       password,
     })
-    router.refresh()
+    router.push('/')
+    // router.refresh()
   }
 
   const handleSignOut = async () => {
@@ -29,7 +30,7 @@ export default function Login() {
   return (
     <main className='w-screen h-screen justify-center items-center bg-slate-500'>
       <Head><title>Login</title></Head>
-      <Navbar/>
+      <Navbar {...{tab:'login'}}/>
       <div className='m-8 p-4 flex flex-col justify-center items-center bg-zinc-400 text-black rounded-xl'>
         Email:
         <input
@@ -48,8 +49,8 @@ export default function Login() {
           className='m-4 p-2 w-1/2 text-black rounded-md'
         />
         <div className=''>
-          <button onClick={handleSignIn}  className='m-4 p-2 w-40 bg-red-700 hover:bg-red-600 text-white rounded-md'>Sign in</button>
-          <button onClick={handleSignOut} className='m-4 p-2 w-40 bg-gray-200 hover:bg-gray-300 text-black rounded-md'>Sign out</button>
+          <button onClick={handleSignIn}  className='m-4 p-2 w-40 rounded-md bg-red-700 hover:bg-red-600 text-white transition-all'>Sign in</button>
+          <button onClick={handleSignOut} className='m-4 p-2 w-40 rounded-md bg-gray-200 hover:bg-gray-300 text-black transition-all'>Sign out</button>
         </div>
         <Link href='/reset' className='opacity-50 hover:opacity-100'>Forgot your password? - Reset Password</Link>
         <Link href='/signup' className='opacity-50 hover:opacity-100'>Don&apos;t have an account? - Sign Up</Link>
