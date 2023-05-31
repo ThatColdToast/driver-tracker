@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import type { Database } from '@/types/supabase'
 import ShiftItem from '@/components/Shift'
 import Head from 'next/head'
+import Navbar from '@/components/navbar'
 type Shift = Database["public"]["Tables"]["shifts"]["Row"];
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,8 +25,6 @@ export default function Home() {
 
   // Create a single supabase client for interacting with your database
   const supabase = createClientComponentClient<Database>()
-  // const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL ?? '', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'err')
-  // const { data, error } = supabase.from('shifts').select() // Select all from user ordered by data desc
 
   useEffect(() => {
     const getData = async () => {
@@ -39,6 +38,7 @@ export default function Home() {
   return (
     <main className={`w-screen h-screen bg-slate-500 ${inter.className}`}>
       <Head><title>Shifts</title></Head>
+      <Navbar/>
       <div className='p-24 flex flex-col justify-center items-center'>
         { shifts ?
         <>

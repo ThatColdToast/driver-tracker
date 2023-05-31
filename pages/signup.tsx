@@ -5,6 +5,7 @@ import { useState } from 'react'
 import type { Database } from '@/types/supabase'
 import Link from 'next/link'
 import Head from 'next/head'
+import Navbar from '@/components/navbar'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -24,9 +25,10 @@ export default function Login() {
   }
 
   return (
-    <main className='w-screen h-screen p-8 justify-center items-center bg-slate-500'>
+    <main className='w-screen h-screen justify-center items-center bg-slate-500'>
       <Head><title>Sign Up</title></Head>
-      <div className='p-4 flex flex-col justify-center items-center bg-zinc-400 text-black rounded-xl'>
+      <Navbar/>
+      <div className='m-8 p-4 flex flex-col justify-center items-center bg-zinc-400 text-black rounded-xl'>
         Email:
         <input
           name="email"

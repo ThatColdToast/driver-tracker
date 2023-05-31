@@ -22,7 +22,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex flex-auto flex-row justify-center items-center bg-gray-700 text-white">
+    <div className="flex flex-grow flex-row justify-center items-center bg-gray-700 text-white">
       <h1 className="float-left text-xl">Shift Tracker</h1>
       <div className="flex-none border-b-2 border-white">
         <ul className="flex flex-row">
@@ -35,7 +35,7 @@ const Navbar = () => {
         </ul>
       </div>
       
-      <p className="float-right">{user?.username}</p>
+      <p className="flex flex-grow float-right justify-end">{user?.username}</p>
     </div>
   );
 };
