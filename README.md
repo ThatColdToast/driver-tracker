@@ -40,4 +40,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Generate Supabase Types
 
 Run the following command to generate supabase types:
-`npx supabase gen types typescript --project-id "fklutoctmzfawwrahwbd" --schema public > types/supabase.ts`
+```bash
+npx supabase gen types typescript --project-id "fklutoctmzfawwrahwbd" --schema public > types/supabase.ts
+```
