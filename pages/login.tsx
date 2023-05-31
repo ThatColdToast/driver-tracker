@@ -28,7 +28,7 @@ export default function Login() {
 
   return (
     <main className='w-screen h-screen justify-center items-center bg-slate-500'>
-      <Head><title>titties</title></Head>
+      <Head><title>Login</title></Head>
       <Navbar/>
       <div className='m-8 p-4 flex flex-col justify-center items-center bg-zinc-400 text-black rounded-xl'>
         Email:
