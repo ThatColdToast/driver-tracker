@@ -26,7 +26,7 @@ export default function ShiftAdd() {
 
     await supabase
       .from("shifts")
-      .upsert({ id: randomUUID(), user_id: user.id });
+      .upsert({ id: randomUUID(), user_id: user.id, created_at: date, odometer_start: odoStart, odometer_end: odoEnd });
     router.refresh();
   };
 
