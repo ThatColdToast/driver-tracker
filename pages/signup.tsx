@@ -44,7 +44,7 @@ export default function Login() {
           className='m-4 p-2 w-1/2 text-black rounded-md'
         />
         <div className=''>
-          <button onClick={handleSignUp}  className='m-4 p-2 w-40 bg-red-700 text-white rounded-md'>Create Account</button>
+          <button onClick={handleSignUp}  className='m-4 p-2 w-40 bg-red-700 hover:bg-red-600 text-white rounded-md'>Create Account</button>
         </div>
         <Link href='/reset' className='opacity-50 hover:opacity-100'>Forgot your password? - Reset Password</Link>
         <Link href='/login' className='opacity-50 hover:opacity-100'>Already have an account? - Login</Link>

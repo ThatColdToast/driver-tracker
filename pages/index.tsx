@@ -44,7 +44,8 @@ export default function Home() {
         <>
           Shifts:
           <div className='flex flex-col bg-zinc-400 border-blue-900 text-black rounded-lg'>
-            {shifts && shifts.map(shift => (<ShiftItem key={shift.id} {...shift}/>))}
+            {shifts.map(shift => (<ShiftItem key={shift.id} {...shift}/>))}
+            {/* {shifts.reduce((partialSum, a) => (partialSum + a.revenue), 0)} */}
           </div>
         </> : <>
           Shifts:

@@ -33,9 +33,9 @@ export default function Login() {
         />
 
         <div className=''>
-          <button onClick={handleReset}  className='m-4 p-2 w-40 bg-red-700 text-white rounded-md'>Reset Password</button>
+          <button onClick={handleReset}  className='m-4 p-2 w-40 bg-red-700 hover:bg-red-600 text-white rounded-md'>Reset Password</button>
         </div>
-        <Link href='/reset' className='opacity-50 hover:opacity-100'>Forgot your password? - Reset Password</Link>
+        <Link href='/login' className='opacity-50 hover:opacity-100'>Already have an account? - Login</Link>
         <Link href='/signup' className='opacity-50 hover:opacity-100'>Don&apos;t have an account? - Sign Up</Link>
       </div>
     </main>
